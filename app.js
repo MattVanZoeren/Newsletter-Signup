@@ -1,5 +1,6 @@
 //jshint esversion: 6
 
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
@@ -38,7 +39,7 @@ app.post('/', function(req, res){
 
     const options = {
         method: 'POST',
-        auth: 'mattvanzoeren:6c345bbcb423a49c9facf76c3cc01267-us17'
+        auth: 'mattvanzoeren:' + process.env.MAILCHIMP
     }
 
     const request = https.request(url, options, function(response){
@@ -72,4 +73,3 @@ app.listen(process.env.PORT || 3000, function(){
 
 
 // audience id for mailchimp: 71b683e561
-// api key for mailchimp: 6c345bbcb423a49c9facf76c3cc01267-us17
